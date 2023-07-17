@@ -1,4 +1,6 @@
 import torch as tc
+import sys
+sys.path.append("..")
 import Library.MatrixProductState as mps
 
 
