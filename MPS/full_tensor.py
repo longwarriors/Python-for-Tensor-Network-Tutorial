@@ -3,15 +3,13 @@ import sys
 sys.path.append("..")
 import Library.MatrixProductState as mps
 
+tc.set_default_dtype(tc.float64)
 
 print('建立开放边界MPS')
 length, d, chi = 6, 2, 4
-dtype = tc.float64
-
-tensors = [tc.randn(1, d, chi, dtype=dtype)] + \
-          [tc.randn(chi, d, chi, dtype=dtype)
-           for _ in range(length-2)] + \
-          [tc.randn(chi, d, 1, dtype=dtype)]
+tensors = [tc.randn(1, d, chi)] + \
+          [tc.randn(chi, d, chi) for _ in range(length-2)] + \
+          [tc.randn(chi, d, 1)]
 
 psi = tensors[0]
 print('第0个张量的形状为：', tensors[0].shape)
